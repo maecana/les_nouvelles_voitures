@@ -27,6 +27,8 @@ Listed below are the technologies used to make this app possible
 
 ## Packages/Dependencies
 - styled-components
+- @material-ui/core
+- @material-ui/icons
 
 
 
