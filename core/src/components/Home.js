@@ -1,12 +1,21 @@
 // Package / Dependency
 import styled from 'styled-components';
 import Section from './Section';
+import HomeData from '../constants';
 
 
 const Home = () => {
+
     return (
         <Container>
-            <Section />
+            {HomeData.map(data => (
+                <Section
+                    title={data.title}
+                    description={data.description}
+                    backgroundImg={data.backgroundImg}
+                    primaryButtonContent={data.primaryButtonContent}
+                    secondaryButtonContent={data.secondaryButtonContent} />
+            ))}
         </Container>
     )
 };

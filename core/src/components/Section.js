@@ -2,18 +2,18 @@
 import styled from 'styled-components';
 
 
-const Section = () => {
+const Section = ({ title, description, backgroundImg, primaryButtonContent, secondaryButtonContent}) => {
     return (
-        <Wrap>
+        <Wrap bg={backgroundImg}>
             <HeaderContent>
-                <h1>Model S</h1>
-                <p>Order online for touchless delivery</p>
+                <h1>{title || ''}</h1>
+                <p>{description || ''}</p>
             </HeaderContent>
 
             <CallToAction>
                 <ButtonGroup>
-                    <OrderButton>Custom Order</OrderButton>
-                    <InventoryButton>Existing Inventory</InventoryButton>
+                    <PrimaryButtonContent>{primaryButtonContent || 'Order'}</PrimaryButtonContent>
+                    {secondaryButtonContent && <SecondaryButtonContent>{secondaryButtonContent || 'Inventory'}</SecondaryButtonContent>}
                 </ButtonGroup>
 
                 <DownArrow src="/images/down-arrow.svg" />
@@ -27,7 +27,11 @@ const Wrap = styled.div`
     width: 100vw;
     height: 100vh;
 
-    background-image: url('/images/model-s.jpg');
+    background-image: ${props => `url("images/${props.bg}")`};
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-);
     background-size: cover;
     background-position: center;
     background-repeat: norepeat;
@@ -54,7 +58,7 @@ const ButtonGroup = styled.div`
 `;
 
 
-const OrderButton = styled.div`
+const PrimaryButtonContent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,7 +76,7 @@ const OrderButton = styled.div`
     cursor: pointer;
 `;
 
-const InventoryButton = styled(OrderButton)`
+const SecondaryButtonContent = styled(PrimaryButtonContent)`
     background-color: white;
     opacity: 0.65;
     color: black;
