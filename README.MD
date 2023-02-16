@@ -22,6 +22,7 @@ Listed below are the technologies used to make this app possible
 | Name | Link | Description |
 | ------ | ------ | ------ |
 | ReactJS | [https://reactjs.org/](https://reactjs.org/) | Front-end Framework |
+| React Reveal | [https://www.react-reveal.com/](https://www.react-reveal.com/) | Front-end Animation |
 
 
 
@@ -29,6 +30,7 @@ Listed below are the technologies used to make this app possible
 - styled-components
 - @material-ui/core
 - @material-ui/icons
+- react-reveal
 
 
 
