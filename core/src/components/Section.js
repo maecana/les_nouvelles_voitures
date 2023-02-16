@@ -1,23 +1,28 @@
 // Package / Dependency Imports
 import styled from 'styled-components';
+import Fade from 'react-reveal/Fade';
 
 
 const Section = ({ title, description, backgroundImg, primaryButtonContent, secondaryButtonContent}) => {
     return (
         <Wrap bg={backgroundImg}>
-            <HeaderContent>
-                <h1>{title || ''}</h1>
-                <p>{description || ''}</p>
-            </HeaderContent>
+            <Fade bottom>
+                <HeaderContent>
+                    <h1>{title || ''}</h1>
+                    <p>{description || ''}</p>
+                </HeaderContent>
+            </Fade>
 
-            <CallToAction>
-                <ButtonGroup>
-                    <PrimaryButtonContent>{primaryButtonContent || 'Order'}</PrimaryButtonContent>
-                    {secondaryButtonContent && <SecondaryButtonContent>{secondaryButtonContent || 'Inventory'}</SecondaryButtonContent>}
-                </ButtonGroup>
+            <Fade bottom>
+                <CallToAction>
+                    <ButtonGroup>
+                        <PrimaryButtonContent>{primaryButtonContent || 'Order'}</PrimaryButtonContent>
+                        {secondaryButtonContent && <SecondaryButtonContent>{secondaryButtonContent || 'Inventory'}</SecondaryButtonContent>}
+                    </ButtonGroup>
 
-                <DownArrow src="/images/down-arrow.svg" />
-            </CallToAction>
+                    <DownArrow src="/images/down-arrow.svg" />
+                </CallToAction>
+            </Fade>
         </Wrap>
     )
 };
