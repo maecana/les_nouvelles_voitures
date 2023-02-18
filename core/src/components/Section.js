@@ -1,19 +1,19 @@
 // Package / Dependency Imports
 import styled from 'styled-components';
-import Fade from 'react-reveal/Fade';
+import { Slide } from "react-awesome-reveal";
 
 
 const Section = ({ title, description, backgroundImg, primaryButtonContent, secondaryButtonContent}) => {
     return (
         <Wrap bg={backgroundImg}>
-            <Fade bottom>
+            <Slide direction="up">
                 <HeaderContent>
                     <h1>{title || ''}</h1>
                     <p>{description || ''}</p>
                 </HeaderContent>
-            </Fade>
+            </Slide>
 
-            <Fade bottom>
+            <Slide direction="up">
                 <CallToAction>
                     <ButtonGroup>
                         <PrimaryButtonContent>{primaryButtonContent || 'Order'}</PrimaryButtonContent>
@@ -22,7 +22,7 @@ const Section = ({ title, description, backgroundImg, primaryButtonContent, seco
 
                     <DownArrow src="/images/down-arrow.svg" />
                 </CallToAction>
-            </Fade>
+            </Slide>
         </Wrap>
     )
 };
