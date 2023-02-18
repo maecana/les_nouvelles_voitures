@@ -8,8 +8,9 @@ const Home = () => {
 
     return (
         <Container>
-            {HomeData.map(data => (
+            {HomeData.map((data, index) => (
                 <Section
+                    key={index}
                     title={data.title}
                     description={data.description}
                     backgroundImg={data.backgroundImg}
