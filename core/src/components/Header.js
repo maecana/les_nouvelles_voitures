@@ -1,9 +1,14 @@
 // Package / Dependency Imports
+import { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@material-ui/icons/Menu";
+import CloseIcon from "@material-ui/icons/Close";
+import HomeData from "../constants";
 
 
 const Header = () => {
+    const [sideNavStat, setSideNavStat] = useState(false);
+
     return (
         <Container>
             <a href="/">
@@ -19,8 +24,19 @@ const Header = () => {
             <RightMenu>
                 <a href="/#">Shop</a>
                 <a href="/#">Tesla Account</a>
-                <CustomMenuIcon />
+                <CustomMenuIcon onClick={() => setSideNavStat(true)}/>
             </RightMenu>
+
+            <BurgerNav show={sideNavStat}>
+                <CloseWrapper>
+                    <CustomCloseIcon onClick={() => setSideNavStat(false)} />
+                </CloseWrapper>
+                {HomeData.map((item, index) => (
+                    <li key={`${item.title} ${index}`}><a key={`${item.title} ${index}`} href="/#">{item.title}</a></li>
+                ))}
+                <li><a href="/#">Trade-In</a></li>
+                <li><a href="/#">Existing Inventory</a></li>
+            </BurgerNav>
         </Container>
     )
 };
@@ -72,5 +88,39 @@ const CustomMenuIcon = styled(MenuIcon)`
     cursor: pointer;
 `;
 
+const BurgerNav = styled.div`
+    width: 300px;
+    z-index: 2;
+    position: fixed;
+    list-style: none;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    background-color: white;
+    text-align: start;
+
+    transform: ${props => props.show ? 'translateX(0)' : 'translateX(100%)'};
+    transition: transform 0.3s ease-in-out;
+
+    li {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, .2);
+        
+        a {
+            font-weight: 600;
+        }
+    }
+`;
+
+const CloseWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+`;
+
+const CustomCloseIcon = styled(CloseIcon)`
+    cursor: pointer;
+`;
 
 export default Header;
