@@ -1,12 +1,15 @@
 // Package / Dependency Imports
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
-import HomeData from "../constants";
+// Local Imports
+import { selectCars } from "../features/car/slice";
 
 
 const Header = () => {
+    const cars = useSelector(selectCars);
     const [sideNavStat, setSideNavStat] = useState(false);
 
     return (
@@ -31,8 +34,8 @@ const Header = () => {
                 <CloseWrapper>
                     <CustomCloseIcon onClick={() => setSideNavStat(false)} />
                 </CloseWrapper>
-                {HomeData.map((item, index) => (
-                    <li key={`${item.title} ${index}`}><a key={`${item.title} ${index}`} href="/#">{item.title}</a></li>
+                {cars && cars.map((item, index) => (
+                    <li key={`${index}`}><a key={`${item}`} href="/#">{item}</a></li>
                 ))}
                 <li><a href="/#">Trade-In</a></li>
                 <li><a href="/#">Existing Inventory</a></li>
